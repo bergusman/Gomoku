@@ -60,13 +60,12 @@ NSInteger const EmptyStone = 0;
     return count;
 }
 
-
 - (GomokuBoardLine *)findFirstLine {
     NSInteger w = _size.width;
     NSInteger h = _size.height;
     NSInteger c = 0;
     
-    // Horizontal rows
+    // Scan: ⟶
     for (NSInteger y = 0; y < h; y++) {
         c = 1;
         
@@ -82,7 +81,7 @@ NSInteger const EmptyStone = 0;
         }
     }
     
-    // Vertical rows
+    // Scan: ↓
     for (NSInteger x = 0; x < w; x++) {
         c = 1;
         
@@ -98,13 +97,17 @@ NSInteger const EmptyStone = 0;
         }
     }
     
-    // General diagonal rows
-    /*
-    for (NSInteger y = 0; y < h; y++) {
+    // Scan: ↗︎
+    NSInteger lc = (h + w - 1) - (_lineLength - 1);
+    for (NSInteger l = (_lineLength - 1); l < lc; l++) {
         c = 1;
+        NSInteger x = MAX(0, l - h + 1);
+        NSInteger y = MIN(h - 1, l);
         
-        for (NSInteger x = 1; x < w; x++) {
-            if (_board[y][x] == _board[y][x - 1]) {
+        x++ ,y--;
+        
+        for (; y >= 0 && x < w; x++, y--) {
+            if (_board[y][x] == _board[y + 1][x - 1]) {
                 c++;
                 if (c >= _lineLength) {
                     return nil;
@@ -114,10 +117,27 @@ NSInteger const EmptyStone = 0;
             }
         }
     }
-     */
     
-    
-    // Diagonal rows
+    // Scan: ↖︎
+    lc = (h + w - 1) - (_lineLength - 1);
+    for (NSInteger l = (_lineLength - 1); l < lc; l++) {
+        c = 1;
+        NSInteger x = MIN(w - 1, l);   //MAX(0, l - h + 1);
+        NSInteger y = (h - 1) - MAX(0, l - w + 1);
+        
+        x--, y--;
+        
+        for (; y >= 0 && x >= 0; x--, y--) {
+            if (_board[y][x] == _board[y + 1][x + 1]) {
+                c++;
+                if (c >= _lineLength) {
+                    return nil;
+                }
+            } else {
+                c = 1;
+            }
+        }
+    }
     
     return nil;
 }

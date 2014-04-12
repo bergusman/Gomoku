@@ -206,7 +206,7 @@ NSInteger const EmptyStone = 0;
 #pragma mark - Creation
 
 + (NSInteger **)allocBoardWithSize:(GomokuSize)size {
-    NSInteger **board = malloc(sizeof(NSInteger) * size.height);
+    NSInteger **board = malloc(sizeof(NSInteger *) * size.height);
     for (NSInteger i = 0; i < size.height; i++) {
         board[i] = malloc(sizeof(NSInteger) * size.width);
         memset(board[i], 0, sizeof(NSInteger) * size.width);

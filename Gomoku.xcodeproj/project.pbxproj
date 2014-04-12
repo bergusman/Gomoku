@@ -24,6 +24,7 @@
 		ADB7D9FA18F97B9600EFDB02 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9F918F97B9600EFDB02 /* BoardView.m */; };
 		ADB7DA0018F9834000EFDB02 /* StoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9FF18F9834000EFDB02 /* StoneView.m */; };
 		ADEC88F918F9E556007367F6 /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEC88F818F9E556007367F6 /* BoardTests.m */; };
+		ADEC88FC18F9FE3A007367F6 /* NSValue+GomokuGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEC88FB18F9FE3A007367F6 /* NSValue+GomokuGeometry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		ADB7D9FE18F9834000EFDB02 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
 		ADB7D9FF18F9834000EFDB02 /* StoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneView.m; sourceTree = "<group>"; };
 		ADEC88F818F9E556007367F6 /* BoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardTests.m; sourceTree = "<group>"; };
+		ADEC88FA18F9FE3A007367F6 /* NSValue+GomokuGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GomokuGeometry.h"; sourceTree = "<group>"; };
+		ADEC88FB18F9FE3A007367F6 /* NSValue+GomokuGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GomokuGeometry.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				ADB7D9ED18F936A300EFDB02 /* GomokuGeometry.h */,
+				ADEC88FA18F9FE3A007367F6 /* NSValue+GomokuGeometry.h */,
+				ADEC88FB18F9FE3A007367F6 /* NSValue+GomokuGeometry.m */,
 				ADB7D9EA18F9346500EFDB02 /* GomokuBoard.h */,
 				ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */,
 			);
@@ -310,6 +315,7 @@
 				ADB7D9C818F9343200EFDB02 /* main.m in Sources */,
 				ADB7D9F218F9799B00EFDB02 /* GameViewController.m in Sources */,
 				ADB7D9EC18F9346500EFDB02 /* GomokuBoard.m in Sources */,
+				ADEC88FC18F9FE3A007367F6 /* NSValue+GomokuGeometry.m in Sources */,
 				ADB7D9FA18F97B9600EFDB02 /* BoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

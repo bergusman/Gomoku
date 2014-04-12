@@ -29,8 +29,7 @@
 #pragma mark - Setups
 
 - (void)setupBoard {
-    self.boardView.boardWidth = 10;
-    self.boardView.boardHeight = 10;
+    self.boardView.boardSize = GomokuSizeMake(10, 10);
     self.boardView.cellSize = CGSizeMake(32, 32);
 }
 
@@ -40,6 +39,7 @@
     [self.stoneViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.stoneViews = [NSMutableArray array];
     self.board = [GomokuBoard gomokuBoardWithSize:GomokuSizeMake(10, 10)];
+    self.boardView.highlightedCells = nil;
 }
 
 - (void)makeStepWithPoint:(GomokuPoint)point {
@@ -60,7 +60,28 @@
         stoneView.label.text = stone == 1 ? @"X" : @"O";
         stoneView.label.textColor = stone == 1 ? RGB(220, 0, 0) : RGB(0, 100, 255);
         
-        [self.board findFirstLine];
+        [self.stoneViews addObject:stoneView];
+        
+        GomokuLine *line = [self.board findFirstLine];
+        if (line) {
+            NSMutableArray *points = [NSMutableArray arrayWithCapacity:5];
+            
+            NSInteger dy = (line.to.y - line.from.y) / 4;
+            NSInteger dx = (line.to.x - line.from.x) / 4;
+            
+            NSInteger x = line.from.x;
+            NSInteger y = line.from.y;
+            
+            for (int i = 0; i < 5; i++) {
+                [points addObject:[NSValue valueWithGomokuPoint:GomokuPointMake(x, y)]];
+                
+                x += dx;
+                y += dy;
+            }
+            
+            self.boardView.highlightedColor = [(line.stone == 1 ? RGB(220, 0, 0) : RGB(0, 100, 255)) colorWithAlphaComponent:0.2];
+            self.boardView.highlightedCells = points;
+        }
     }
 }
 

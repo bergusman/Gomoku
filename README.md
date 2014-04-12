@@ -1,4 +1,4 @@
 Gomoku
 ======
 
-Very simple implementation gomoku board game
+Very simple implementation Gomoku board game

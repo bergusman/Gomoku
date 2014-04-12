@@ -21,15 +21,7 @@
 
     GameViewController *gameVC = [[GameViewController alloc] init];
     self.window.rootViewController = gameVC;
-    
-    GomokuBoard *board = [GomokuBoard gomokuBoardWithSize:GomokuBoardSizeMake(10, 10)];
-    [board putStone:1 atPoint:GomokuBoardPointMake(1, 0)];
-    [board putStone:1 atPoint:GomokuBoardPointMake(2, 0)];
-    [board putStone:1 atPoint:GomokuBoardPointMake(3, 0)];
-    [board putStone:1 atPoint:GomokuBoardPointMake(4, 0)];
-    [board putStone:1 atPoint:GomokuBoardPointMake(5, 0)];
-    [board findFirstLine];
-    
+
     return YES;
 }
 

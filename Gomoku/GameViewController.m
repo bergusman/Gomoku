@@ -39,10 +39,10 @@
 - (void)resetGame {
     [self.stoneViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.stoneViews = [NSMutableArray array];
-    self.board = [GomokuBoard gomokuBoardWithSize:GomokuBoardSizeMake(10, 10)];
+    self.board = [GomokuBoard gomokuBoardWithSize:GomokuSizeMake(10, 10)];
 }
 
-- (void)makeStepWithPoint:(GomokuBoardPoint)point {
+- (void)makeStepWithPoint:(GomokuPoint)point {
     if (![self.board isPointInBoard:point]) {
         return;
     }
@@ -67,7 +67,7 @@
 - (void)handleTap:(UITapGestureRecognizer *)tap {
     CGPoint location = [tap locationInView:self.boardView];
     
-    GomokuBoardPoint point = GomokuBoardPointMake(location.x / 32, location.y / 32);
+    GomokuPoint point = GomokuPointMake(location.x / 32, location.y / 32);
     [self makeStepWithPoint:point];
 }
 

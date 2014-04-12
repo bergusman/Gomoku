@@ -8,36 +8,41 @@
 
 #import <Foundation/Foundation.h>
 
-#import "GomokuBoardGeometry.h"
+#import "GomokuGeometry.h"
 
-@interface GomokuBoardLine : NSObject
-
-@property (assign, nonatomic, readonly) NSInteger stone;
-@property (strong, nonatomic, readonly) NSArray *points;
-
-- (instancetype)initWithStone:(NSInteger)stone points:(NSArray *)points;
-+ (GomokuBoardLine *)gomokuBoardLineWithStone:(NSInteger)stone points:(NSArray *)points;
-
-@end;
 
 extern NSInteger const EmptyStone;
 
+
+@interface GomokuLine : NSObject
+
+@property (assign, nonatomic, readonly) NSInteger stone;
+
+@property (assign, nonatomic) GomokuPoint from;
+@property (assign, nonatomic) GomokuPoint to;
+
+- (instancetype)initWithStone:(NSInteger)stone from:(GomokuPoint)from to:(GomokuPoint)to;
++ (GomokuLine *)gomokuLineWithStone:(NSInteger)stone from:(GomokuPoint)from to:(GomokuPoint)to;
+
+@end;
+
+
 @interface GomokuBoard : NSObject
 
-@property (assign, nonatomic, readonly) GomokuBoardSize size;
+@property (assign, nonatomic, readonly) GomokuSize size;
 
-- (void)putStone:(NSInteger)stone atPoint:(GomokuBoardPoint)point;
-- (NSInteger)stoneAtPoint:(GomokuBoardPoint)point;
+- (BOOL)putStone:(NSInteger)stone atPoint:(GomokuPoint)point;
+- (NSInteger)stoneAtPoint:(GomokuPoint)point;
 
-- (BOOL)isPointInBoard:(GomokuBoardPoint)point;
-- (BOOL)containsStoneAtPoint:(GomokuBoardPoint)point;
+- (BOOL)isPointInBoard:(GomokuPoint)point;
+- (BOOL)containsStoneAtPoint:(GomokuPoint)point; // -[GomokuBoard stoneAtPoint:] != EmptyStone
 
 - (NSUInteger)countOfStones:(NSInteger)stone;
 
-- (GomokuBoardLine *)findFirstLine;
+- (GomokuLine *)findFirstLine;
 - (NSArray *)findAllLines;
 
-- (instancetype)initWithSize:(GomokuBoardSize)size;
-+ (GomokuBoard *)gomokuBoardWithSize:(GomokuBoardSize)size;
+- (instancetype)initWithSize:(GomokuSize)size;
++ (GomokuBoard *)gomokuBoardWithSize:(GomokuSize)size;
 
 @end

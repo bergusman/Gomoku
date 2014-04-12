@@ -32,6 +32,17 @@ NSInteger const EmptyStone = 0;
     return EmptyStone;
 }
 
+- (BOOL)isPointInBoard:(GomokuBoardPoint)point {
+    return GomokuBoardPointInBoundsOfSize(point, _size);
+}
+
+- (BOOL)containsStoneAtPoint:(GomokuBoardPoint)point {
+    if (GomokuBoardPointInBoundsOfSize(point, _size)) {
+        return _board[point.y][point.x] != EmptyStone;
+    }
+    return NO;
+}
+
 - (NSUInteger)countOfStones:(NSInteger)stone {
     NSInteger w = _size.width;
     NSInteger h = _size.height;
@@ -121,6 +132,7 @@ NSInteger const EmptyStone = 0;
     NSInteger **board = malloc(sizeof(NSInteger) * size.height);
     for (NSInteger i = 0; i < size.height; i++) {
         board[i] = malloc(sizeof(NSInteger) * size.width);
+        memset(board[i], 0, sizeof(NSInteger) * size.width);
     }
     return board;
 }

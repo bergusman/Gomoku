@@ -29,6 +29,9 @@ extern NSInteger const EmptyStone;
 - (void)putStone:(NSInteger)stone atPoint:(GomokuBoardPoint)point;
 - (NSInteger)stoneAtPoint:(GomokuBoardPoint)point;
 
+- (BOOL)isPointInBoard:(GomokuBoardPoint)point;
+- (BOOL)containsStoneAtPoint:(GomokuBoardPoint)point;
+
 - (NSUInteger)countOfStones:(NSInteger)stone;
 
 - (GomokuBoardLine *)findFirstLine;

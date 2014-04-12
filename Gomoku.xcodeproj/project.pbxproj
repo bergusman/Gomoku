@@ -19,6 +19,7 @@
 		ADB7D9D718F9343200EFDB02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB7D9BF18F9343200EFDB02 /* UIKit.framework */; };
 		ADB7D9DF18F9343200EFDB02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB7D9DD18F9343200EFDB02 /* InfoPlist.strings */; };
 		ADB7D9E118F9343200EFDB02 /* GomokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9E018F9343200EFDB02 /* GomokuTests.m */; };
+		ADB7D9EC18F9346500EFDB02 /* GomokuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,9 @@
 		ADB7D9DC18F9343200EFDB02 /* GomokuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GomokuTests-Info.plist"; sourceTree = "<group>"; };
 		ADB7D9DE18F9343200EFDB02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADB7D9E018F9343200EFDB02 /* GomokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GomokuTests.m; sourceTree = "<group>"; };
+		ADB7D9EA18F9346500EFDB02 /* GomokuBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GomokuBoard.h; sourceTree = "<group>"; };
+		ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GomokuBoard.m; sourceTree = "<group>"; };
+		ADB7D9ED18F936A300EFDB02 /* GomokuBoardGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GomokuBoardGeometry.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		ADB7D9C118F9343200EFDB02 /* Gomoku */ = {
 			isa = PBXGroup;
 			children = (
+				ADB7D9EE18F9457200EFDB02 /* Gomoku Model */,
 				ADB7D9CA18F9343200EFDB02 /* AppDelegate.h */,
 				ADB7D9CB18F9343200EFDB02 /* AppDelegate.m */,
 				ADB7D9CD18F9343200EFDB02 /* Images.xcassets */,
@@ -142,6 +147,16 @@
 				ADB7D9DD18F9343200EFDB02 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ADB7D9EE18F9457200EFDB02 /* Gomoku Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADB7D9ED18F936A300EFDB02 /* GomokuBoardGeometry.h */,
+				ADB7D9EA18F9346500EFDB02 /* GomokuBoard.h */,
+				ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */,
+			);
+			name = "Gomoku Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +256,7 @@
 			files = (
 				ADB7D9CC18F9343200EFDB02 /* AppDelegate.m in Sources */,
 				ADB7D9C818F9343200EFDB02 /* main.m in Sources */,
+				ADB7D9EC18F9346500EFDB02 /* GomokuBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

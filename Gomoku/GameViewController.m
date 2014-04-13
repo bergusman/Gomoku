@@ -13,6 +13,12 @@
 
 #import "GomokuBoard.h"
 
+typedef NS_ENUM(NSInteger, GameState) {
+    GameStateNone,
+    GameStatePlaying,
+    GameStateGameOver
+};
+
 @interface GameViewController ()
 
 @property (weak, nonatomic) IBOutlet BoardView *boardView;
@@ -21,6 +27,7 @@
 @property (strong, nonatomic) GomokuBoard *board;
 
 @property (assign, nonatomic) BOOL firstPlayerStep;
+@property (assign, nonatomic) GameState gameState;
 
 @end
 
@@ -40,9 +47,15 @@
     self.stoneViews = [NSMutableArray array];
     self.board = [GomokuBoard gomokuBoardWithSize:GomokuSizeMake(10, 10)];
     self.boardView.highlightedCells = nil;
+    
+    self.gameState = GameStatePlaying;
 }
 
 - (void)makeStepWithPoint:(GomokuPoint)point {
+    if (self.gameState != GameStatePlaying) {
+        return;
+    }
+    
     if (![self.board isPointInBoard:point]) {
         return;
     }
@@ -81,6 +94,8 @@
             
             self.boardView.highlightedColor = [(line.stone == 1 ? RGB(220, 0, 0) : RGB(0, 100, 255)) colorWithAlphaComponent:0.2];
             self.boardView.highlightedCells = points;
+            
+            self.gameState = GameStateGameOver;
         }
     }
 }

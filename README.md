@@ -1,4 +1,4 @@
-Gomoku
-======
+Gomoku Base
+===========
 
-Very simple implementation Gomoku board game
+Very simple implementation of [Gomoku](http://en.wikipedia.org/wiki/Gomoku).

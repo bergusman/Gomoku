@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, GameState) {
     GameStateGameOver
 };
 
-@interface GameViewController ()
+@interface GameViewController () <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet BoardView *boardView;
 @property (strong, nonatomic) NSMutableArray *stoneViews;
@@ -113,8 +113,25 @@ typedef NS_ENUM(NSInteger, GameState) {
     [self resetGame];
 }
 
+- (IBAction)endButtonTouchUpInside:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Abort Game"
+                                                    otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
 - (IBAction)tap:(UITapGestureRecognizer *)tap {
     [self handleTap:tap];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - UIViewController

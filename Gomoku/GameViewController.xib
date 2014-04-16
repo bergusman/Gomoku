@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y4N-FO-7PI" userLabel="Reset Button">
-                    <rect key="frame" x="90" y="486" width="140" height="40"/>
+                    <rect key="frame" x="90" y="465" width="140" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
                     <state key="normal" title="Reset Game">
@@ -40,6 +40,18 @@
                     </state>
                     <connections>
                         <action selector="resetButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="Iir-8R-PUp"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MYc-Kd-C9V" userLabel="End Button">
+                    <rect key="frame" x="90" y="508" width="140" height="40"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
+                    <state key="normal" title="End Game">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="endButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="jys-IZ-dcr"/>
+                        <action selector="resetButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="p55-C5-ZuR"/>
                     </connections>
                 </button>
             </subviews>

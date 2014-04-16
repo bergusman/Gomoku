@@ -8,19 +8,17 @@
 
 #import "AppDelegate.h"
 
-#import "GameViewController.h"
-
-#import "GomokuBoard.h"
+#import "RoomViewController.h"
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
 
-    GameViewController *gameVC = [[GameViewController alloc] init];
-    self.window.rootViewController = gameVC;
+    RoomViewController *roomVC = [[RoomViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:roomVC];
+    self.window.rootViewController = nc;
 
     return YES;
 }

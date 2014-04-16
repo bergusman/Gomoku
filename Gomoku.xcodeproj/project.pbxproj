@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD08CEC718FF03EF00D830B8 /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CEC518FF03EF00D830B8 /* RoomViewController.m */; };
+		AD08CEC818FF03EF00D830B8 /* RoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD08CEC618FF03EF00D830B8 /* RoomViewController.xib */; };
+		AD08CECC18FF084100D830B8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CECA18FF084100D830B8 /* SettingsViewController.m */; };
+		AD08CECD18FF084100D830B8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD08CECB18FF084100D830B8 /* SettingsViewController.xib */; };
 		ADB7D9BC18F9343200EFDB02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB7D9BB18F9343200EFDB02 /* Foundation.framework */; };
 		ADB7D9BE18F9343200EFDB02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB7D9BD18F9343200EFDB02 /* CoreGraphics.framework */; };
 		ADB7D9C018F9343200EFDB02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB7D9BF18F9343200EFDB02 /* UIKit.framework */; };
@@ -38,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD08CEC418FF03EF00D830B8 /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
+		AD08CEC518FF03EF00D830B8 /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		AD08CEC618FF03EF00D830B8 /* RoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomViewController.xib; sourceTree = "<group>"; };
+		AD08CEC918FF084100D830B8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		AD08CECA18FF084100D830B8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		AD08CECB18FF084100D830B8 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		ADB7D9B818F9343200EFDB02 /* Gomoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gomoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB7D9BB18F9343200EFDB02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADB7D9BD18F9343200EFDB02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,6 +102,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD08CEC018FF037800D830B8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				ADB7D9EE18F9457200EFDB02 /* Gomoku Models */,
+				ADB7D9F518F97A6800EFDB02 /* Controllers & Views */,
+				ADB7D9CA18F9343200EFDB02 /* AppDelegate.h */,
+				ADB7D9CB18F9343200EFDB02 /* AppDelegate.m */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		AD08CEC118FF038000D830B8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ADB7D9CD18F9343200EFDB02 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AD08CEC218FF039D00D830B8 /* Settings Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD08CEC918FF084100D830B8 /* SettingsViewController.h */,
+				AD08CECA18FF084100D830B8 /* SettingsViewController.m */,
+				AD08CECB18FF084100D830B8 /* SettingsViewController.xib */,
+			);
+			name = "Settings Controller";
+			sourceTree = "<group>";
+		};
+		AD08CEC318FF03A600D830B8 /* Room Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD08CEC418FF03EF00D830B8 /* RoomViewController.h */,
+				AD08CEC518FF03EF00D830B8 /* RoomViewController.m */,
+				AD08CEC618FF03EF00D830B8 /* RoomViewController.xib */,
+			);
+			name = "Room Controller";
+			sourceTree = "<group>";
+		};
 		ADB7D9AF18F9343200EFDB02 = {
 			isa = PBXGroup;
 			children = (
@@ -125,11 +174,8 @@
 		ADB7D9C118F9343200EFDB02 /* Gomoku */ = {
 			isa = PBXGroup;
 			children = (
-				ADB7D9EE18F9457200EFDB02 /* Gomoku Model */,
-				ADB7D9F518F97A6800EFDB02 /* Views & Controllers */,
-				ADB7D9CA18F9343200EFDB02 /* AppDelegate.h */,
-				ADB7D9CB18F9343200EFDB02 /* AppDelegate.m */,
-				ADB7D9CD18F9343200EFDB02 /* Images.xcassets */,
+				AD08CEC018FF037800D830B8 /* Sources */,
+				AD08CEC118FF038000D830B8 /* Resources */,
 				ADB7D9C218F9343200EFDB02 /* Supporting Files */,
 			);
 			path = Gomoku;
@@ -164,7 +210,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		ADB7D9EE18F9457200EFDB02 /* Gomoku Model */ = {
+		ADB7D9EE18F9457200EFDB02 /* Gomoku Models */ = {
 			isa = PBXGroup;
 			children = (
 				ADB7D9ED18F936A300EFDB02 /* GomokuGeometry.h */,
@@ -173,22 +219,24 @@
 				ADB7D9EA18F9346500EFDB02 /* GomokuBoard.h */,
 				ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */,
 			);
-			name = "Gomoku Model";
+			name = "Gomoku Models";
 			sourceTree = "<group>";
 		};
-		ADB7D9F518F97A6800EFDB02 /* Views & Controllers */ = {
+		ADB7D9F518F97A6800EFDB02 /* Controllers & Views */ = {
 			isa = PBXGroup;
 			children = (
-				ADB7D9FD18F9833300EFDB02 /* Stone View */,
-				ADB7D9F718F97AAD00EFDB02 /* Board View */,
+				AD08CEC318FF03A600D830B8 /* Room Controller */,
+				AD08CEC218FF039D00D830B8 /* Settings Controller */,
 				ADB7D9F618F97AA100EFDB02 /* Game Controller */,
 			);
-			name = "Views & Controllers";
+			name = "Controllers & Views";
 			sourceTree = "<group>";
 		};
 		ADB7D9F618F97AA100EFDB02 /* Game Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADB7D9FD18F9833300EFDB02 /* Stone View */,
+				ADB7D9F718F97AAD00EFDB02 /* Board View */,
 				ADB7D9EF18F9799B00EFDB02 /* GameViewController.h */,
 				ADB7D9F018F9799B00EFDB02 /* GameViewController.m */,
 				ADB7D9F118F9799B00EFDB02 /* GameViewController.xib */,
@@ -292,6 +340,8 @@
 				ADB7D9C618F9343200EFDB02 /* InfoPlist.strings in Resources */,
 				ADB7D9F318F9799B00EFDB02 /* GameViewController.xib in Resources */,
 				ADB7D9CE18F9343200EFDB02 /* Images.xcassets in Resources */,
+				AD08CEC818FF03EF00D830B8 /* RoomViewController.xib in Resources */,
+				AD08CECD18FF084100D830B8 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +363,8 @@
 				ADB7DA0018F9834000EFDB02 /* StoneView.m in Sources */,
 				ADB7D9CC18F9343200EFDB02 /* AppDelegate.m in Sources */,
 				ADB7D9C818F9343200EFDB02 /* main.m in Sources */,
+				AD08CECC18FF084100D830B8 /* SettingsViewController.m in Sources */,
+				AD08CEC718FF03EF00D830B8 /* RoomViewController.m in Sources */,
 				ADB7D9F218F9799B00EFDB02 /* GameViewController.m in Sources */,
 				ADB7D9EC18F9346500EFDB02 /* GomokuBoard.m in Sources */,
 				ADEC88FC18F9FE3A007367F6 /* NSValue+GomokuGeometry.m in Sources */,

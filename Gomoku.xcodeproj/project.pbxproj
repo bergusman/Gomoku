@@ -24,11 +24,19 @@
 		ADB7D9DF18F9343200EFDB02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB7D9DD18F9343200EFDB02 /* InfoPlist.strings */; };
 		ADB7D9EC18F9346500EFDB02 /* GomokuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */; };
 		ADB7D9F218F9799B00EFDB02 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9F018F9799B00EFDB02 /* GameViewController.m */; };
-		ADB7D9F318F9799B00EFDB02 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADB7D9F118F9799B00EFDB02 /* GameViewController.xib */; };
+		ADB7D9F318F9799B00EFDB02 /* GameViewController-568h.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADB7D9F118F9799B00EFDB02 /* GameViewController-568h.xib */; };
 		ADB7D9FA18F97B9600EFDB02 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9F918F97B9600EFDB02 /* BoardView.m */; };
 		ADB7DA0018F9834000EFDB02 /* StoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7D9FF18F9834000EFDB02 /* StoneView.m */; };
+		ADBEBCD41904139C00435C92 /* GomokuGame.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCD31904139C00435C92 /* GomokuGame.m */; };
+		ADBEBCD61904162C00435C92 /* GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCD51904162C00435C92 /* GameTests.m */; };
+		ADBEBCD91904253200435C92 /* NearbyService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCD81904253200435C92 /* NearbyService.m */; };
+		ADBEBCDC1904254100435C92 /* GameSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCDB1904254100435C92 /* GameSession.m */; };
+		ADBEBCDF1904254D00435C92 /* RoomSession.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCDE1904254D00435C92 /* RoomSession.m */; };
+		ADBEBCE2190425F000435C92 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCE1190425F000435C92 /* UserDefaults.m */; };
+		ADBEBCE5190429D800435C92 /* NearbyPeer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBEBCE4190429D800435C92 /* NearbyPeer.m */; };
 		ADEC88F918F9E556007367F6 /* BoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEC88F818F9E556007367F6 /* BoardTests.m */; };
 		ADEC88FC18F9FE3A007367F6 /* NSValue+GomokuGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEC88FB18F9FE3A007367F6 /* NSValue+GomokuGeometry.m */; };
+		ADF200E21904567100AD8FBD /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF200E11904567100AD8FBD /* GameViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,14 +76,28 @@
 		ADB7D9ED18F936A300EFDB02 /* GomokuGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GomokuGeometry.h; sourceTree = "<group>"; };
 		ADB7D9EF18F9799B00EFDB02 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		ADB7D9F018F9799B00EFDB02 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		ADB7D9F118F9799B00EFDB02 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		ADB7D9F118F9799B00EFDB02 /* GameViewController-568h.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GameViewController-568h.xib"; sourceTree = "<group>"; };
 		ADB7D9F818F97B9600EFDB02 /* BoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardView.h; sourceTree = "<group>"; };
 		ADB7D9F918F97B9600EFDB02 /* BoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardView.m; sourceTree = "<group>"; };
 		ADB7D9FE18F9834000EFDB02 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
 		ADB7D9FF18F9834000EFDB02 /* StoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneView.m; sourceTree = "<group>"; };
+		ADBEBCD21904139C00435C92 /* GomokuGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GomokuGame.h; sourceTree = "<group>"; };
+		ADBEBCD31904139C00435C92 /* GomokuGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GomokuGame.m; sourceTree = "<group>"; };
+		ADBEBCD51904162C00435C92 /* GameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTests.m; sourceTree = "<group>"; };
+		ADBEBCD71904253200435C92 /* NearbyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyService.h; sourceTree = "<group>"; };
+		ADBEBCD81904253200435C92 /* NearbyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyService.m; sourceTree = "<group>"; };
+		ADBEBCDA1904254100435C92 /* GameSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSession.h; sourceTree = "<group>"; };
+		ADBEBCDB1904254100435C92 /* GameSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSession.m; sourceTree = "<group>"; };
+		ADBEBCDD1904254D00435C92 /* RoomSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomSession.h; sourceTree = "<group>"; };
+		ADBEBCDE1904254D00435C92 /* RoomSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomSession.m; sourceTree = "<group>"; };
+		ADBEBCE0190425F000435C92 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaults.h; sourceTree = "<group>"; };
+		ADBEBCE1190425F000435C92 /* UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
+		ADBEBCE3190429D800435C92 /* NearbyPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPeer.h; sourceTree = "<group>"; };
+		ADBEBCE4190429D800435C92 /* NearbyPeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPeer.m; sourceTree = "<group>"; };
 		ADEC88F818F9E556007367F6 /* BoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardTests.m; sourceTree = "<group>"; };
 		ADEC88FA18F9FE3A007367F6 /* NSValue+GomokuGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GomokuGeometry.h"; sourceTree = "<group>"; };
 		ADEC88FB18F9FE3A007367F6 /* NSValue+GomokuGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GomokuGeometry.m"; sourceTree = "<group>"; };
+		ADF200E11904567100AD8FBD /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				ADB7D9EE18F9457200EFDB02 /* Gomoku Models */,
+				ADB2CFED1902F30C00141265 /* Models */,
 				ADB7D9F518F97A6800EFDB02 /* Controllers & Views */,
 				ADB7D9CA18F9343200EFDB02 /* AppDelegate.h */,
 				ADB7D9CB18F9343200EFDB02 /* AppDelegate.m */,
@@ -139,6 +162,23 @@
 				AD08CEC618FF03EF00D830B8 /* RoomViewController.xib */,
 			);
 			name = "Room Controller";
+			sourceTree = "<group>";
+		};
+		ADB2CFED1902F30C00141265 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ADBEBCE0190425F000435C92 /* UserDefaults.h */,
+				ADBEBCE1190425F000435C92 /* UserDefaults.m */,
+				ADBEBCD71904253200435C92 /* NearbyService.h */,
+				ADBEBCD81904253200435C92 /* NearbyService.m */,
+				ADBEBCE3190429D800435C92 /* NearbyPeer.h */,
+				ADBEBCE4190429D800435C92 /* NearbyPeer.m */,
+				ADBEBCDA1904254100435C92 /* GameSession.h */,
+				ADBEBCDB1904254100435C92 /* GameSession.m */,
+				ADBEBCDD1904254D00435C92 /* RoomSession.h */,
+				ADBEBCDE1904254D00435C92 /* RoomSession.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		ADB7D9AF18F9343200EFDB02 = {
@@ -195,6 +235,7 @@
 		ADB7D9DA18F9343200EFDB02 /* GomokuTests */ = {
 			isa = PBXGroup;
 			children = (
+				ADBEBCD51904162C00435C92 /* GameTests.m */,
 				ADEC88F818F9E556007367F6 /* BoardTests.m */,
 				ADB7D9DB18F9343200EFDB02 /* Supporting Files */,
 			);
@@ -218,6 +259,8 @@
 				ADEC88FB18F9FE3A007367F6 /* NSValue+GomokuGeometry.m */,
 				ADB7D9EA18F9346500EFDB02 /* GomokuBoard.h */,
 				ADB7D9EB18F9346500EFDB02 /* GomokuBoard.m */,
+				ADBEBCD21904139C00435C92 /* GomokuGame.h */,
+				ADBEBCD31904139C00435C92 /* GomokuGame.m */,
 			);
 			name = "Gomoku Models";
 			sourceTree = "<group>";
@@ -239,7 +282,8 @@
 				ADB7D9F718F97AAD00EFDB02 /* Board View */,
 				ADB7D9EF18F9799B00EFDB02 /* GameViewController.h */,
 				ADB7D9F018F9799B00EFDB02 /* GameViewController.m */,
-				ADB7D9F118F9799B00EFDB02 /* GameViewController.xib */,
+				ADB7D9F118F9799B00EFDB02 /* GameViewController-568h.xib */,
+				ADF200E11904567100AD8FBD /* GameViewController.xib */,
 			);
 			name = "Game Controller";
 			sourceTree = "<group>";
@@ -338,7 +382,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADB7D9C618F9343200EFDB02 /* InfoPlist.strings in Resources */,
-				ADB7D9F318F9799B00EFDB02 /* GameViewController.xib in Resources */,
+				ADB7D9F318F9799B00EFDB02 /* GameViewController-568h.xib in Resources */,
+				ADF200E21904567100AD8FBD /* GameViewController.xib in Resources */,
 				ADB7D9CE18F9343200EFDB02 /* Images.xcassets in Resources */,
 				AD08CEC818FF03EF00D830B8 /* RoomViewController.xib in Resources */,
 				AD08CECD18FF084100D830B8 /* SettingsViewController.xib in Resources */,
@@ -360,13 +405,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADBEBCE5190429D800435C92 /* NearbyPeer.m in Sources */,
 				ADB7DA0018F9834000EFDB02 /* StoneView.m in Sources */,
 				ADB7D9CC18F9343200EFDB02 /* AppDelegate.m in Sources */,
+				ADBEBCD91904253200435C92 /* NearbyService.m in Sources */,
 				ADB7D9C818F9343200EFDB02 /* main.m in Sources */,
 				AD08CECC18FF084100D830B8 /* SettingsViewController.m in Sources */,
 				AD08CEC718FF03EF00D830B8 /* RoomViewController.m in Sources */,
+				ADBEBCE2190425F000435C92 /* UserDefaults.m in Sources */,
+				ADBEBCDF1904254D00435C92 /* RoomSession.m in Sources */,
+				ADBEBCDC1904254100435C92 /* GameSession.m in Sources */,
 				ADB7D9F218F9799B00EFDB02 /* GameViewController.m in Sources */,
 				ADB7D9EC18F9346500EFDB02 /* GomokuBoard.m in Sources */,
+				ADBEBCD41904139C00435C92 /* GomokuGame.m in Sources */,
 				ADEC88FC18F9FE3A007367F6 /* NSValue+GomokuGeometry.m in Sources */,
 				ADB7D9FA18F97B9600EFDB02 /* BoardView.m in Sources */,
 			);
@@ -377,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADEC88F918F9E556007367F6 /* BoardTests.m in Sources */,
+				ADBEBCD61904162C00435C92 /* GameTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +540,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gomoku/Gomoku-Prefix.pch";
 				INFOPLIST_FILE = "Gomoku/Gomoku-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -501,6 +554,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gomoku/Gomoku-Prefix.pch";
 				INFOPLIST_FILE = "Gomoku/Gomoku-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

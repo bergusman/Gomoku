@@ -11,7 +11,9 @@
 #import "BoardView.h"
 #import "StoneView.h"
 
-#import "GomokuBoard.h"
+#import "GomokuGame.h"
+
+#import "GameSession.h"
 
 typedef NS_ENUM(NSInteger, GameState) {
     GameStateNone,
@@ -19,15 +21,18 @@ typedef NS_ENUM(NSInteger, GameState) {
     GameStateGameOver
 };
 
-@interface GameViewController () <UIActionSheetDelegate>
+@interface GameViewController () <UIActionSheetDelegate, GameSessionDelegate>
 
 @property (weak, nonatomic) IBOutlet BoardView *boardView;
 @property (strong, nonatomic) NSMutableArray *stoneViews;
 
 @property (strong, nonatomic) GomokuBoard *board;
+@property (strong, nonatomic) GomokuGame *game;
 
 @property (assign, nonatomic) BOOL firstPlayerStep;
 @property (assign, nonatomic) GameState gameState;
+
+@property (assign, nonatomic) GomokuStone myStone;
 
 @end
 
@@ -42,11 +47,13 @@ typedef NS_ENUM(NSInteger, GameState) {
 
 #pragma mark - Content
 
+
 - (void)resetGame {
     [self.stoneViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.stoneViews = [NSMutableArray array];
     self.board = [GomokuBoard gomokuBoardWithSize:GomokuSizeMake(10, 10)];
     self.boardView.highlightedCells = nil;
+    self.game = [GomokuGame gomokuGameWithBoard:self.board];
     
     self.gameState = GameStatePlaying;
 }
@@ -61,6 +68,9 @@ typedef NS_ENUM(NSInteger, GameState) {
     }
     
     if ([self.board stoneAtPoint:point] == EmptyStone) {
+
+        
+        
         NSInteger stone = self.firstPlayerStep ? 1 : 2;
         self.firstPlayerStep = !self.firstPlayerStep;
         
@@ -101,11 +111,27 @@ typedef NS_ENUM(NSInteger, GameState) {
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)tap {
+    
     CGPoint location = [tap locationInView:self.boardView];
     
     GomokuPoint point = GomokuPointMake(location.x / 32, location.y / 32);
     [self makeStepWithPoint:point];
 }
+
+#pragma mark - GameSessionDelegate
+
+- (void)gameSession:(GameSession *)session didStartWithOpponentStone:(NSString *)stone {
+    if ([stone isEqualToString:@"x"]) {
+        self.myStone = GomokuGameStoneX;
+    } else {
+        self.myStone = GomokuGameStoneO;
+    }
+}
+
+- (void)gameSession:(GameSession *)session didMakeStepAtX:(NSInteger)x Y:(NSInteger)y {
+    
+}
+
 
 #pragma mark - Actions
 
@@ -140,6 +166,20 @@ typedef NS_ENUM(NSInteger, GameState) {
     [super viewDidLoad];
     [self setupBoard];
     [self resetGame];
+    
+    if (self.gameSession.master) {
+        self.myStone = GomokuGameStoneX;
+        [self.gameSession startWithOpponentStone:@"o"];
+    }
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (IS_IPHONE_5) {
+        self = [super initWithNibName:@"GameViewController-568h" bundle:nil];
+    } else {
+        self = [super initWithNibName:@"GameViewController" bundle:nil];
+    }
+    return self;
 }
 
 @end

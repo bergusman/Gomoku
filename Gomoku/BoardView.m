@@ -61,4 +61,11 @@
     [path stroke];
 }
 
+#pragma mark - Nibbing
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.backgroundColor = [UIColor whiteColor];
+}
+
 @end

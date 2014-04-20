@@ -11,11 +11,21 @@
 #import "SettingsViewController.h"
 #import "GameViewController.h"
 
-@interface RoomViewController ()
+#import "RoomSession.h"
+#import "GameSession.h"
+
+@interface RoomViewController () <RoomSessionDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIActivityIndicatorView *spinnerView;
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
+@property (strong, nonatomic) RoomSession *roomSession;
+
+@property (strong, nonatomic) UIAlertView *invitationAlertView;
+@property (copy, nonatomic) void (^invitationHandler)(BOOL accept);
+
+@property (assign, nonatomic) BOOL master;
 
 @end
 
@@ -42,20 +52,13 @@
 
 #pragma mark - Content
 
-- (NSString *)name {
-    return [[NSUserDefaults standardUserDefaults] stringForKey:@"PlayerName"];
-}
-
-- (void)setName:(NSString *)name {
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"PlayerName"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
+/*
 - (void)showSettingsIfNoName {
     if ([self.name length] == 0) {
         [self showSettingsAnimated:NO];
     }
 }
+ */
 
 - (void)showSettingsAnimated:(BOOL)animated {
     SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
@@ -63,9 +66,64 @@
     [self presentViewController:nc animated:animated completion:nil];
 }
 
-- (void)showGame {
+- (void)showGameWithPeer:(NearbyPeer *)peer {
+    GameSession *gameSession = [[GameSession alloc] initWithService:[AppDelegate sharedAppDelegate].nearbyService master:self.master];
+    gameSession.opponentUUID = peer.uuid;
     GameViewController *gameVC = [[GameViewController alloc] init];
+    gameVC.gameSession = gameSession;
     [self presentViewController:gameVC animated:YES completion:nil];
+}
+
+- (void)createRoomSession {
+    self.roomSession = [[RoomSession alloc] initWithService:[AppDelegate sharedAppDelegate].nearbyService];
+    self.roomSession.delegate = self;
+    [self.roomSession start];
+}
+
+#pragma mark - RoomSessionDelegate
+
+- (void)roomSessionDidUpdatePeers:(RoomSession *)session {
+    [self.tableView reloadData];
+}
+
+- (void)roomSession:(RoomSession *)session didReceiveInvitationFromPeer:(NearbyPeer *)peer invitationHandler:(void(^)(BOOL accept))invitationHandler {
+    [self.invitationAlertView dismissWithClickedButtonIndex:0 animated:YES];
+    if (self.invitationHandler) {
+        self.invitationHandler(NO);
+    }
+    
+    NSString *message = [NSString stringWithFormat:@"Would you like to play with %@", peer.name];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invitation"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+    
+    self.invitationAlertView = alertView;
+    self.invitationHandler = invitationHandler;
+    
+    [alertView show];
+}
+
+- (void)roomSession:(RoomSession *)session peer:(NearbyPeer *)peer didChangeState:(MCSessionState)state {
+    NSLog(@"%s", __func__);
+    [self.roomSession stop];
+    [self showGameWithPeer:peer];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        if (self.invitationHandler) {
+            self.invitationHandler(YES);
+        }
+    } else {
+        if (self.invitationHandler) {
+            self.invitationHandler(NO);
+        }
+    }
 }
 
 #pragma mark - Actions
@@ -77,7 +135,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return [self.roomSession.peers count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,16 +143,11 @@
     if (!cell.accessoryView) {
         UIActivityIndicatorView *spinnerView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         cell.accessoryView = spinnerView;
-        [spinnerView startAnimating];
+        //[spinnerView startAnimating];
     }
     
-    if ([indexPath isEqual:self.selectedIndexPath]) {
-        [((UIActivityIndicatorView *)cell.accessoryView) startAnimating];
-    } else {
-        [((UIActivityIndicatorView *)cell.accessoryView) stopAnimating];
-    }
-
-    cell.textLabel.text = @"Vitaly Berg";
+    NearbyPeer *peer = self.roomSession.peers[indexPath.row];
+    cell.textLabel.text = peer.name;
     
     return cell;
 }
@@ -108,15 +161,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    self.selectedIndexPath = indexPath;
-    [self.tableView reloadData];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.selectedIndexPath = nil;
-        [self showGame];
-    });
-    
-    // TODO: select player
+    NearbyPeer *peer = self.roomSession.peers[indexPath.row];
+    [self.roomSession invitePeer:peer];
 }
 
 #pragma mark - UIViewController
@@ -127,7 +173,9 @@
     [self setupNavigationItem];
     [self setupTableView];
     
-    [self showSettingsIfNoName];
+    [self createRoomSession];
+    
+    //[self showSettingsIfNoName];
 }
 
 @end

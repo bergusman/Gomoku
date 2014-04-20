@@ -8,12 +8,13 @@
 
 #import "GomokuBoard.h"
 
-NSInteger const EmptyStone = 0;
+
+GomokuStone const EmptyStone = 0;
 
 
 @implementation GomokuLine
 
-- (instancetype)initWithStone:(NSInteger)stone from:(GomokuPoint)from to:(GomokuPoint)to {
+- (instancetype)initWithStone:(GomokuStone)stone from:(GomokuPoint)from to:(GomokuPoint)to {
     self = [super init];
     if (self) {
         _stone = stone;
@@ -23,7 +24,7 @@ NSInteger const EmptyStone = 0;
     return self;
 }
 
-+ (GomokuLine *)gomokuLineWithStone:(NSInteger)stone from:(GomokuPoint)from to:(GomokuPoint)to {
++ (GomokuLine *)gomokuLineWithStone:(GomokuStone)stone from:(GomokuPoint)from to:(GomokuPoint)to {
     return [[GomokuLine alloc] initWithStone:stone from:from to:to];
 }
 
@@ -31,7 +32,7 @@ NSInteger const EmptyStone = 0;
 
 
 @interface GomokuBoard () {
-    NSInteger **_board;
+    GomokuStone **_board;
     NSInteger _lineLength;
 }
 
@@ -39,7 +40,7 @@ NSInteger const EmptyStone = 0;
 
 @implementation GomokuBoard
 
-- (BOOL)putStone:(NSInteger)stone atPoint:(GomokuPoint)point {
+- (BOOL)putStone:(GomokuStone)stone atPoint:(GomokuPoint)point {
     if (GomokuPointInBoundsOfSize(point, _size)) {
         _board[point.y][point.x] = stone;
         return YES;
@@ -47,7 +48,7 @@ NSInteger const EmptyStone = 0;
     return NO;
 }
 
-- (NSInteger)stoneAtPoint:(GomokuPoint)point {
+- (GomokuStone)stoneAtPoint:(GomokuPoint)point {
     if (GomokuPointInBoundsOfSize(point, _size)) {
         return _board[point.y][point.x];
     }
@@ -65,7 +66,22 @@ NSInteger const EmptyStone = 0;
     return NO;
 }
 
-- (NSUInteger)countOfStones:(NSInteger)stone {
+- (BOOL)isEmptyStoneAtPoint:(GomokuPoint)point {
+    if (GomokuPointInBoundsOfSize(point, _size)) {
+        return _board[point.y][point.x] == EmptyStone;
+    }
+    return NO;
+}
+
+- (BOOL)isFull {
+    return [self countOfStones:EmptyStone] == 0;
+}
+
+- (BOOL)isEmpty {
+    return [self countOfStones:EmptyStone] == self.size.height * self.size.width;
+}
+
+- (NSUInteger)countOfStones:(GomokuStone)stone {
     NSInteger w = _size.width;
     NSInteger h = _size.height;
     
@@ -203,18 +219,33 @@ NSInteger const EmptyStone = 0;
     return lines;
 }
 
+#pragma mark - Debug
+
+- (NSString *)textBoard {
+    NSMutableString *board = [NSMutableString string];
+    
+    for (NSInteger y = 0; y < _size.height; y++) {
+        for (NSInteger x = 0; x < _size.width; x++) {
+            [board appendFormat:@"%ld", _board[y][x]];
+        }
+        [board appendFormat:@"\n"];
+    }
+    
+    return board;
+}
+
 #pragma mark - Creation
 
 + (NSInteger **)allocBoardWithSize:(GomokuSize)size {
-    NSInteger **board = malloc(sizeof(NSInteger *) * size.height);
+    NSInteger **board = malloc(sizeof(GomokuStone *) * size.height);
     for (NSInteger i = 0; i < size.height; i++) {
-        board[i] = malloc(sizeof(NSInteger) * size.width);
-        memset(board[i], 0, sizeof(NSInteger) * size.width);
+        board[i] = malloc(sizeof(GomokuStone) * size.width);
+        memset(board[i], 0, sizeof(GomokuStone) * size.width);
     }
     return board;
 }
 
-+ (void)deallocBoard:(NSInteger **)board withSize:(GomokuSize)size {
++ (void)deallocBoard:(GomokuStone **)board withSize:(GomokuSize)size {
     for (NSInteger i = 0; i < size.height; i++) {
         free(board[i]);
     }

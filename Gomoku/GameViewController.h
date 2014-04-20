@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class GameSession;
+
 @interface GameViewController : UIViewController
+
+@property (strong, nonatomic) GameSession *gameSession;
 
 @end
